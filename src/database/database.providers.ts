@@ -13,7 +13,7 @@ const dbc: PostgresConnectionOptions = {
     schema: 'public',
     ...dbConfig,
     entities: [
-        __dirname + '/../**/*.entity{.ts,.js}',
+        __dirname + '/../**/**.entity{.ts,.js}',
     ],
     synchronize: true,
 };

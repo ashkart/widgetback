@@ -2,6 +2,7 @@
 .vscode/
 node_modules/
 build/
+src/database/db-config.local.ts
 tmp/
 temp/
-src/database/db-config.local.ts
+

@@ -1,17 +1,17 @@
-import { Module } from '@nestjs/common';
-import { Widget } from './entity';
-import { WidgetService } from './widget.service';
-import {Connection} from 'typeorm';
-import {WIDGET_REPOSITORY} from '../constants';
+import {Module} from '@nestjs/common';
+import {WidgetService} from './widget.service';
+import {widgetProviders} from './widget.providers';
+import {DatabaseModule} from '../database/database.module';
+import { WidgetController } from './widget.controller';
 
 @Module({
-  providers: [
-    WidgetService,
-    {
-      provide: WIDGET_REPOSITORY,
-      useFactory: (connection: Connection) => connection.getRepository(Widget),
-      inject: ['DATABASE_CONNECTION'],
-    },
-  ],
+    imports: [DatabaseModule],
+    providers: [
+        ...widgetProviders,
+        WidgetService,
+    ],
+    controllers: [WidgetController],
+    exports: [...widgetProviders, WidgetService],
 })
-export class WidgetModule {}
+export class WidgetModule {
+}

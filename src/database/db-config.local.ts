@@ -5,6 +5,8 @@ export const dbConfig: PostgresConnectionOptions = {
     host: 'localhost',
     port: 5432,
     database: 'widget',
+    username: 'max',
+    password: 'Bankai123',
     schema: 'public',
     cache: false,
 };
