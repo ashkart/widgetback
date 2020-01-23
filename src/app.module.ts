@@ -9,6 +9,9 @@ import { DatabaseModule } from './database/database.module';
 import {WidgetController} from './widget/widget.controller';
 import { AnswerModule } from './answer/answer.module';
 import { QuestionModule } from './question/question.module';
+import { UserModule } from './user/user.module';
+import { UserService } from './user/user.service';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
     imports: [
@@ -18,9 +21,11 @@ import { QuestionModule } from './question/question.module';
         StepModule,
         AnswerModule,
         QuestionModule,
+        UserModule,
+        AuthModule,
     ],
     controllers: [AppController, WidgetController],
-    providers: [AppService, WidgetService],
+    providers: [AppService, WidgetService, UserService],
 })
 export class AppModule {
 }
