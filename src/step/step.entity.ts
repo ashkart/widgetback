@@ -1,7 +1,13 @@
-import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import {Column, Entity, PrimaryGeneratedColumn, TableInheritance} from 'typeorm';
+
+export enum StepType {
+    Question,
+    Finish,
+}
 
 @Entity()
-export class Step {
+@TableInheritance({column: {type: 'enum', enum: StepType, name: 'type'}})
+export abstract class Step {
     @PrimaryGeneratedColumn()
     id: number;
 

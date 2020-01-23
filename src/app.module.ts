@@ -7,6 +7,8 @@ import { OrderModule } from './order/order.module';
 import { StepModule } from './step/step.module';
 import { DatabaseModule } from './database/database.module';
 import {WidgetController} from './widget/widget.controller';
+import { AnswerModule } from './answer/answer.module';
+import { QuestionModule } from './question/question.module';
 
 @Module({
     imports: [
@@ -14,6 +16,8 @@ import {WidgetController} from './widget/widget.controller';
         WidgetModule,
         OrderModule,
         StepModule,
+        AnswerModule,
+        QuestionModule,
     ],
     controllers: [AppController, WidgetController],
     providers: [AppService, WidgetService],
