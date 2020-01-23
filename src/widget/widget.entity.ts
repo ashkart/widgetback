@@ -1,11 +1,9 @@
-import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import {Column, Entity} from 'typeorm';
 import {Order} from '../order/order.entity';
+import {AbstractEntity} from '../abstract-module/abstract-entity';
 
 @Entity()
-export class Widget {
-    @PrimaryGeneratedColumn()
-    id: number;
-
+export class Widget extends AbstractEntity {
     @Column({length: 300})
     name: string;
 

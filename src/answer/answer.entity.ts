@@ -1,10 +1,8 @@
-import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import {Column, Entity} from 'typeorm';
+import {AbstractEntity} from '../abstract-module/abstract-entity';
 
 @Entity()
-export class Answer {
-    @PrimaryGeneratedColumn()
-    id: number;
-
+export class Answer extends AbstractEntity {
     @Column()
     questionId: number;
 

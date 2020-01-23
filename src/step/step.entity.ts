@@ -1,4 +1,5 @@
-import {Column, Entity, PrimaryGeneratedColumn, TableInheritance} from 'typeorm';
+import {Column, Entity, TableInheritance} from 'typeorm';
+import {AbstractEntity} from '../abstract-module/abstract-entity';
 
 export enum StepType {
     Question,
@@ -7,10 +8,7 @@ export enum StepType {
 
 @Entity()
 @TableInheritance({column: {type: 'enum', enum: StepType, name: 'type'}})
-export abstract class Step {
-    @PrimaryGeneratedColumn()
-    id: number;
-
+export abstract class Step extends AbstractEntity {
     @Column()
     widgetId: number;
 

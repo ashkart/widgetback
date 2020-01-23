@@ -1,10 +1,8 @@
-import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import {Column, Entity} from 'typeorm';
+import {AbstractEntity} from '../abstract-module/abstract-entity';
 
 @Entity()
-export class Order<T> {
-    @PrimaryGeneratedColumn()
-    id: number;
-
+export class Order<T> extends AbstractEntity {
     @Column({
         type: 'varchar',
         length: 2048,
