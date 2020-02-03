@@ -1,7 +1,8 @@
-import {Controller, Get, Query, Req, Res} from '@nestjs/common';
-import {Request, Response} from 'express';
+import {Controller, Get, Post, Query, Req, Res, Request, UseGuards} from '@nestjs/common';
+import {Response} from 'express';
 import {UserService} from '../user/user.service';
 import {AuthService} from './auth.service';
+import {AuthGuard} from '@nestjs/passport';
 
 @Controller('auth')
 export class AuthController {
@@ -11,17 +12,17 @@ export class AuthController {
     ) {
     }
 
-    @Get('/')
-    async auth(@Res() res: Response, @Req() req: Request, @Query('login') login: string, @Query('password') pass: string) {
-        const user = await this.authService.validateUser(login, pass);
+    @Get()
+    index() {
+        return 'Kokoko';
+    }
 
-        if (user === null) {
-            res.status(404);
-            res.send();
-            return 'User not found';
-        }
+    @UseGuards(AuthGuard('local'))
+    @Post('/login')
+    async login(@Res() res: Response, @Request() req) {
+        const user = req.user;
 
         res.cookie('sid', user.id, {maxAge: 3600 * 1000, domain: 'localhost', path: '/', httpOnly: false});
-        res.redirect('/index/user');
+        res.send(JSON.stringify(user));
     }
 }

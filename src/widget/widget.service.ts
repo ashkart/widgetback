@@ -11,13 +11,18 @@ export class WidgetService {
     ) {
     }
 
-    getList() {
-        const findResult = this.widgetRepository.find({});
+    getList(userId: number) {
+        const findResult = this.widgetRepository.find({userId});
 
         return findResult.then((value: Widget[]) => {
-            // tslint:disable-next-line:no-console
-            console.log(value);
+            return value[0].name;
+        });
+    }
 
+    getAll() {
+        const findResult = this.widgetRepository.find();
+
+        return findResult.then((value: Widget[]) => {
             return value[0].name;
         });
     }

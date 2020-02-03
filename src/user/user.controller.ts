@@ -4,5 +4,8 @@ import {Request} from 'express';
 
 @Controller('user')
 export class UserController extends AbstractController {
-
+    @Get('/')
+    user(@Req() req: Request) {
+        return req.user;
+    }
 }

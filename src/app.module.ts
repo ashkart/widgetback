@@ -15,6 +15,7 @@ import { AuthModule } from './auth/auth.module';
 import {RolesGuard} from './roles/roles.guard';
 import {APP_GUARD} from '@nestjs/core';
 import { RolesModule } from './roles/roles.module';
+import {AuthController} from './auth/auth.controller';
 
 @Module({
     imports: [
@@ -28,7 +29,7 @@ import { RolesModule } from './roles/roles.module';
         AuthModule,
         RolesModule,
     ],
-    controllers: [AppController, WidgetController],
+    controllers: [AppController, WidgetController, AuthController],
     providers: [
         AppService,
         WidgetService,
