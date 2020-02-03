@@ -1,8 +1,10 @@
-import {Controller, Get, Req} from '@nestjs/common';
+import {Controller, Get, Req, UseGuards} from '@nestjs/common';
 import {Request} from 'express';
 import {WidgetService} from './widget.service';
+import {Roles} from '../roles/roles.decorator';
 
-@Controller('/widget')
+@Roles('admin')
+@Controller('widget')
 export class WidgetController {
     constructor(private readonly widgetService: WidgetService) {
     }

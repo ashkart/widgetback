@@ -1,9 +1,9 @@
 import {AbstractEntity} from '../abstract-module/abstract-entity';
-import {Column, Entity, Index} from 'typeorm';
+import {Column, Entity, Unique} from 'typeorm';
 
 @Entity()
+@Unique('uidx_user_email', ['email'])
 export class User extends AbstractEntity {
-    @Index({unique: true})
     @Column()
     email: string;
 
@@ -12,4 +12,6 @@ export class User extends AbstractEntity {
 
     @Column()
     password: string;
+
+    roles: string[] = ['user'];
 }
